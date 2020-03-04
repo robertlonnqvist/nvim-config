@@ -1,11 +1,16 @@
 call plug#begin()
 
+Plug 'tpope/vim-sensible'
+
 " javascript
 Plug 'othree/yajs.vim'
 
 " typescript
 Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
+
+" go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -15,9 +20,9 @@ Plug 'mhartington/oceanic-next'
 call plug#end()
 
 if has('clipboard')
-  if has('unnamedplus')  " When possible use + register for copy-paste
+  if has('unnamedplus') " When possible use + register for copy-paste
     set clipboard=unnamed,unnamedplus
-  else         " On mac and Windows, use * register for copy-paste
+  else " On mac and Windows, use * register for copy-paste
     set clipboard=unnamed
   endif
 endif
