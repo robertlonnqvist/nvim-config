@@ -19,6 +19,8 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'mhartington/oceanic-next'
 
+Plug 'preservim/nerdtree'
+
 call plug#end()
 
 if has('clipboard')
@@ -58,6 +60,8 @@ let g:airline_theme='oceanicnext'
 set termguicolors
 set background=dark
 colorscheme OceanicNext
+
+map <silent> <C-n> :NERDTreeToggle<CR>
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
