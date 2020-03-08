@@ -16,8 +16,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 
 Plug 'preservim/nerdtree'
 
@@ -31,12 +32,9 @@ if has('clipboard')
   endif
 endif
 
-" the prefix to use for leader commands
-" let g:mapleader = "<space>"
-
 set nobackup
 set nowritebackup
-set number
+set relativenumber
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -55,11 +53,11 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab " use white spaces instead of tabs
 
-let g:airline_theme='oceanicnext'
+let g:airline_theme = 'gruvbox'
 
 set termguicolors
 set background=dark
-colorscheme OceanicNext
+colorscheme gruvbox
 
 map <silent> <C-n> :NERDTreeToggle<CR>
 
@@ -85,8 +83,6 @@ let g:coc_global_extensions = [
 
 " if hidden is not set, TextEdit might fail.
 set hidden
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 " always show signcolumns
