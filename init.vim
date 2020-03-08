@@ -76,6 +76,8 @@ let g:coc_global_extensions = [
       \'coc-html',
       \'coc-json',
       \'coc-markdownlint',
+      \'coc-pairs',
+      \'coc-python',
       \'coc-prettier',
       \'coc-tsserver'
       \]
@@ -84,8 +86,6 @@ let g:coc_global_extensions = [
 
 " if hidden is not set, TextEdit might fail.
 set hidden
-" Better display for messages
-set cmdheight=2
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
 " don't give |ins-completion-menu| messages.
