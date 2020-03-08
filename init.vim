@@ -77,7 +77,6 @@ let g:coc_global_extensions = [
       \'coc-json',
       \'coc-markdownlint',
       \'coc-pairs',
-      \'coc-python',
       \'coc-prettier',
       \'coc-tsserver'
       \]
