@@ -15,8 +15,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+
+Plug 'itchyny/lightline.vim'
 
 Plug 'morhetz/gruvbox'
 
@@ -32,6 +32,18 @@ if has('clipboard')
   endif
 endif
 
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+
+set noshowmode " displayed by the lightline plugin
 set nobackup
 set nowritebackup
 set relativenumber
@@ -40,20 +52,11 @@ set relativenumber
 " delays and poor user experience.
 set updatetime=300
 
-" NetRw
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-
 " tab settings
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab " use white spaces instead of tabs
-
-let g:airline_theme = 'gruvbox'
 
 set termguicolors
 set background=dark
