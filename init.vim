@@ -18,9 +18,9 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'itchyny/lightline.vim'
 
-Plug 'morhetz/gruvbox'
-
 Plug 'preservim/nerdtree'
+
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
 
@@ -33,20 +33,20 @@ if has('clipboard')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
+      \ 'colorscheme': 'onedark',
+      \   'active': {
+      \     'left': [ [ 'mode', 'paste' ],
+      \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \   },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
+      \     'gitbranch': 'fugitive#head'
+      \   },
       \ }
 
 set noshowmode " displayed by the lightline plugin
-set nobackup
-set nowritebackup
 set relativenumber
+set cursorline
+set title
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -59,8 +59,7 @@ set softtabstop=2
 set expandtab " use white spaces instead of tabs
 
 set termguicolors
-set background=dark
-colorscheme gruvbox
+colorscheme onedark
 
 map <silent> <C-n> :NERDTreeToggle<CR>
 
