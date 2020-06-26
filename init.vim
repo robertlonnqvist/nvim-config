@@ -1,5 +1,6 @@
 call plug#begin()
 
+
 Plug 'tpope/vim-sensible'
 
 " javascript
@@ -44,7 +45,7 @@ let g:lightline = {
       \ }
 
 set noshowmode " displayed by the lightline plugin
-set relativenumber
+set number
 set cursorline
 set title
 
