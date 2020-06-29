@@ -1,27 +1,21 @@
 call plug#begin()
 
-
 Plug 'tpope/vim-sensible'
-
 " javascript
 Plug 'othree/yajs.vim'
-
 " typescript
 Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
-
 " go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'tpope/vim-fugitive'
-
+Plug 'tpope/vim-commentary'
+Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
-
 Plug 'preservim/nerdtree'
-
 Plug 'joshdick/onedark.vim'
+Plug 'kien/ctrlp.vim'
 
 call plug#end()
 
@@ -43,6 +37,8 @@ let g:lightline = {
       \     'gitbranch': 'fugitive#head'
       \   },
       \ }
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 set noshowmode " displayed by the lightline plugin
 set number
