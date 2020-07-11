@@ -14,10 +14,18 @@ Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
-Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
 Plug 'kien/ctrlp.vim'
 
 call plug#end()
+
+" Disable Arrow keys in Normal mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+map <pageUp> <nop>
+map <pageDown> <nop>
 
 if has('clipboard')
   if has('unnamedplus') " When possible use + register for copy-paste
@@ -28,7 +36,7 @@ if has('clipboard')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'gruvbox',
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ],
       \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -56,7 +64,7 @@ set softtabstop=2
 set expandtab " use white spaces instead of tabs
 
 set termguicolors
-colorscheme onedark
+colorscheme gruvbox
 
 map <silent> <C-n> :NERDTreeToggle<CR>
 
