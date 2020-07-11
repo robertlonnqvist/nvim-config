@@ -20,12 +20,18 @@ Plug 'kien/ctrlp.vim'
 call plug#end()
 
 " Disable Arrow keys in Normal mode
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-map <pageUp> <nop>
-map <pageDown> <nop>
+noremap <up> <nop>
+inoremap <up> <nop>
+noremap <down> <nop>
+inoremap <down> <nop>
+noremap <left> <nop>
+inoremap <left> <nop>
+noremap <right> <nop>
+inoremap <right> <nop>
+noremap <pageUp> <nop>
+inoremap <pageUp> <nop>
+noremap <pageDown> <nop>
+inoremap <pageDown> <nop>
 
 if has('clipboard')
   if has('unnamedplus') " When possible use + register for copy-paste
