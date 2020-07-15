@@ -19,27 +19,7 @@ Plug 'kien/ctrlp.vim'
 
 call plug#end()
 
-" Disable Arrow keys in Normal mode
-noremap <up> <nop>
-inoremap <up> <nop>
-noremap <down> <nop>
-inoremap <down> <nop>
-noremap <left> <nop>
-inoremap <left> <nop>
-noremap <right> <nop>
-inoremap <right> <nop>
-noremap <pageUp> <nop>
-inoremap <pageUp> <nop>
-noremap <pageDown> <nop>
-inoremap <pageDown> <nop>
-
-if has('clipboard')
-  if has('unnamedplus') " When possible use + register for copy-paste
-    set clipboard=unnamed,unnamedplus
-  else " On mac and Windows, use * register for copy-paste
-    set clipboard=unnamed
-  endif
-endif
+set clipboard+=unnamedplus
 
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
@@ -55,7 +35,7 @@ let g:lightline = {
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 set noshowmode " displayed by the lightline plugin
-set number
+set number relativenumber 
 set cursorline
 set title
 
