@@ -1,28 +1,22 @@
 call plug#begin()
 
 Plug 'tpope/vim-sensible'
-" javascript
-Plug 'othree/yajs.vim'
-" typescript
-Plug 'leafgarland/typescript-vim'
-Plug 'HerringtonDarkholme/yats.vim'
-" go
+Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
-Plug 'preservim/nerdtree'
-Plug 'morhetz/gruvbox'
-Plug 'kien/ctrlp.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
 set clipboard+=unnamedplus
 
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \   'colorscheme': 'onedark',
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ],
       \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -31,8 +25,6 @@ let g:lightline = {
       \     'gitbranch': 'fugitive#head'
       \   },
       \ }
-
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 set noshowmode " displayed by the lightline plugin
 set number relativenumber 
@@ -50,9 +42,9 @@ set softtabstop=2
 set expandtab " use white spaces instead of tabs
 
 set termguicolors
-colorscheme gruvbox
+colorscheme onedark
 
-map <silent> <C-n> :NERDTreeToggle<CR>
+nmap <C-p> :Files<cr>
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
@@ -147,3 +139,6 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
