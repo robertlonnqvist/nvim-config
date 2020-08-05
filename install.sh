@@ -1,5 +1,5 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
-mkdir -p ${HOME}/.config/nvim
-ln -sf ${PWD}/init.vim ${HOME}/.config/nvim/
-ln -sf ${PWD}/coc-settings.json ${HOME}/.config/nvim/
+mkdir -p ~/.config/nvim
+ln -sf "${PWD}/init.vim" ~/.config/nvim/
+ln -sf "${PWD}/coc-settings.json" ~/.config/nvim/
