@@ -1,0 +1,14 @@
+{
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "Markdown",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
+}

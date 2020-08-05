@@ -61,7 +61,8 @@ let g:coc_global_extensions = [
       \'coc-markdownlint',
       \'coc-pairs',
       \'coc-prettier',
-      \'coc-tsserver'
+      \'coc-tsserver',
+      \'coc-diagnostic'
       \]
 
 " coc.nvim default settings
