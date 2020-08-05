@@ -40,7 +40,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab " use white spaces instead of tabs
-set colorcolumn=81
+set colorcolumn=120
 
 set termguicolors
 colorscheme onedark
