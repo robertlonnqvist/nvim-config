@@ -31,7 +31,7 @@ set number relativenumber
 set cursorline
 set title
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
 
@@ -40,9 +40,23 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab " use white spaces instead of tabs
+set colorcolumn=81
 
 set termguicolors
 colorscheme onedark
+
+set spelllang=en_us
+
+" spell-check Markdown files and Git Commit Messages
+autocmd FileType markdown setlocal spell complete+=kspell
+autocmd FileType gitcommit setlocal spell complete+=kspell
+
+set splitbelow splitright
+
+nnoremap <C-Up> :resize +2<CR>
+nnoremap <C-Down> :resize -2<CR>
+nnoremap <C-Left> :vertical resize +2<CR>
+nnoremap <C-Right> :vertical resize -2<CR>
 
 nmap <C-p> :Files<cr>
 
@@ -51,7 +65,6 @@ nmap <C-p> :Files<cr>
 let g:go_def_mapping_enabled = 0
 
 " coc.nvim setup
-
 let g:coc_global_extensions = [
       \'coc-css',
       \'coc-eslint',
