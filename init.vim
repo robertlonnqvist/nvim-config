@@ -58,7 +58,11 @@ nnoremap <C-Down> :resize -2<CR>
 nnoremap <C-Left> :vertical resize +2<CR>
 nnoremap <C-Right> :vertical resize -2<CR>
 
+" fzf
 nmap <C-p> :Files<cr>
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/*'"
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
