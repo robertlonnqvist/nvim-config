@@ -6,7 +6,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
+Plug 'haishanh/night-owl.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
@@ -14,7 +14,7 @@ call plug#end()
 set clipboard+=unnamedplus
 
 let g:lightline = {
-      \   'colorscheme': 'onedark',
+      \   'colorscheme': 'nightowl',
       \   'active': {
       \     'left': [ [ 'mode', 'paste' ],
       \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -41,7 +41,7 @@ set expandtab " use white spaces instead of tabs
 set colorcolumn=120
 
 set termguicolors
-colorscheme onedark
+colorscheme night-owl
 
 set spelllang=en_us
 
