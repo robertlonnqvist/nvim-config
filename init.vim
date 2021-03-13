@@ -24,6 +24,13 @@ let g:lightline = {
       \   },
       \ }
 
+" if hidden is not set, TextEdit might fail.
+set hidden
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+
 set noshowmode " displayed by the lightline plugin
 set number relativenumber 
 set cursorline
