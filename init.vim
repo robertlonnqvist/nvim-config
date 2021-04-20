@@ -1,13 +1,15 @@
 call plug#begin()
 
 Plug 'tpope/vim-sensible'
-Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -39,6 +41,8 @@ set title
 " having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
+
+let mapleader = ' '
 
 " tab settings
 set tabstop=2
