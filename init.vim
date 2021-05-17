@@ -4,12 +4,11 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'easymotion/vim-easymotion'
+Plug 'HerringtonDarkholme/yats.vim'
 
 call plug#end()
 
