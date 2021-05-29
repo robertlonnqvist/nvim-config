@@ -43,6 +43,10 @@ set updatetime=300
 
 let mapleader = ' '
 
+" show spaces as dots
+set listchars+=space:•
+set list
+
 " tab settings
 set tabstop=2
 set shiftwidth=2
