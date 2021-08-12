@@ -5,25 +5,17 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
-Plug 'itchyny/lightline.vim'
-Plug 'haishanh/night-owl.vim'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'navarasu/onedark.nvim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'HerringtonDarkholme/yats.vim'
 
 call plug#end()
 
-set clipboard+=unnamedplus
+lua require('lualine').setup {options = {theme = 'onedark'}}
 
-let g:lightline = {
-      \   'colorscheme': 'nightowl',
-      \   'active': {
-      \     'left': [ [ 'mode', 'paste' ],
-      \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \   },
-      \ 'component_function': {
-      \     'gitbranch': 'fugitive#head'
-      \   },
-      \ }
+set clipboard+=unnamedplus
 
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -55,7 +47,7 @@ set expandtab " use white spaces instead of tabs
 set colorcolumn=120
 
 set termguicolors
-colorscheme night-owl
+colorscheme onedark
 
 set spelllang=en_us
 
