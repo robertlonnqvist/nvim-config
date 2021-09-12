@@ -37,7 +37,7 @@ vim.opt.clipboard = 'unnamedplus'
 -- if hidden is not set, TextEdit might fail.
 vim.opt.hidden = true
 -- don't give |ins-completion-menu| messages.
---vim.opt.shortmess:append({ c = true })
+vim.opt.shortmess:append({ c = true })
 -- always show signcolumns
 vim.opt.signcolumn = 'yes'
 
