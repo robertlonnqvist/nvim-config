@@ -21,7 +21,10 @@ require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-compe'
   use 'sheerun/vim-polyglot'
-
+  use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
+  }
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' }
@@ -89,6 +92,10 @@ vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin"
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
 vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)
+
+-- Treesitter
+local ts = require 'nvim-treesitter.configs'
+ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
 
 -- LSP
 local nvim_lsp = require('lspconfig')
