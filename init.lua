@@ -79,8 +79,11 @@ vim.opt.expandtab = true
 vim.opt.colorcolumn = '120'
 
 vim.opt.termguicolors = true
-vim.g.onedark_transparent_background = true
-require('onedark').setup()
+
+require('onedark').setup {
+  transparent = true
+}
+require('onedark').load()
 
 vim.opt.spelllang = 'en_us'
 
