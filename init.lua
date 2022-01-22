@@ -106,6 +106,7 @@ vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin"
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
 vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)
+vim.api.nvim_set_keymap('n', '<leader>fv', '<cmd>lua require("telescope.builtin").git_status()<cr>', opts)
 
 -- Treesitter
 local ts = require 'nvim-treesitter.configs'
