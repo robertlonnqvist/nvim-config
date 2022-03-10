@@ -8,7 +8,7 @@ require('packer').startup(function()
   use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
   use {
-    'hoob3rt/lualine.nvim',
+    'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
   use 'navarasu/onedark.nvim'
@@ -43,7 +43,7 @@ require('packer').startup(function()
   }
 end)
 
-require('lualine').setup {options = {theme = 'onedark'}}
+require('lualine').setup()
 require('gitsigns').setup()
 
 vim.opt.clipboard = 'unnamedplus'
