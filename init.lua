@@ -108,7 +108,18 @@ vim.api.nvim_set_keymap('n', '<leader>fv', '<cmd>lua require("telescope.builtin"
 
 -- Treesitter
 local ts = require 'nvim-treesitter.configs'
-ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
+ts.setup {
+  ensure_installed = {
+    'c',
+    'html',
+    'javascript',
+    'json',
+    'json5',
+    'typescript',
+    'rust',
+  },
+  highlight = {enable = true}
+}
 
 -- LSP
 local nvim_lsp = require('lspconfig')
