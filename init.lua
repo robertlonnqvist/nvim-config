@@ -20,6 +20,8 @@ vim.opt.undofile = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+vim.opt.colorcolumn = "100"
+
 -- spelling
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "gitrebase", "markdown" },
