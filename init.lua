@@ -1,4 +1,13 @@
-require("config.lazy")
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
+
+require('plugins.colorscheme')
+require('plugins.lualine')
+require('plugins.lsp')
+require('plugins.treesitter')
+require('plugins.conform')
+require('plugins.gitsigns')
+require('plugins.which-key')
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -11,21 +20,24 @@ vim.opt.expandtab = true
 vim.opt.showmode = false
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
-vim.opt.signcolumn = "yes"
-vim.opt.clipboard = "unnamedplus"
+vim.opt.signcolumn = 'yes'
+vim.opt.colorcolumn = '120'
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.scrolloff = 8
 vim.opt.cursorline = true
 vim.opt.undofile = true
+vim.opt.title = true
+vim.opt.titlestring = 'nvim - %t'
 
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- spelling
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "gitcommit", "gitrebase", "markdown" },
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'gitcommit', 'gitrebase', 'markdown' },
   callback = function()
     vim.opt_local.spell = true
     -- adds dictionary words to the Ctrl-n / Ctrl-p completion list
-    vim.opt_local.complete:append("kspell")
+    vim.opt_local.complete:append('kspell')
   end,
 })
