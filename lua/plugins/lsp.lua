@@ -4,6 +4,11 @@ vim.lsp.config('lua_ls', {
   settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
 })
 
+vim.lsp.config('ruff', {
+  cmd = { 'ruff', 'server' },
+  filetypes = { 'python' },
+})
+
 vim.lsp.config('pyright', {
   cmd = { 'pyright-langserver', '--stdio' },
   filetypes = { 'python' },
@@ -25,7 +30,7 @@ vim.lsp.config('cssls', {
   filetypes = { 'css', 'scss', 'less' },
 })
 
-local servers = { 'lua_ls', 'pyright', 'ts_ls', 'html', 'cssls' }
+local servers = { 'lua_ls', 'ruff', 'pyright', 'ts_ls', 'html', 'cssls' }
 for _, name in ipairs(servers) do
   local config = vim.lsp.config[name]
   if config and config.cmd and vim.fn.executable(config.cmd[1]) == 1 then
@@ -44,6 +49,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.api.nvim_create_autocmd('CursorHold', {
   callback = function()
+    -- skip if we are in a window that's already a float or something else
+    if vim.api.nvim_win_get_config(0).zindex then
+      return
+    end
+
     local opts = {
       focusable = false,
       close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },

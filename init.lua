@@ -11,6 +11,10 @@ require('plugins.which-key')
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.mouse = 'a'
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.termguicolors = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = false

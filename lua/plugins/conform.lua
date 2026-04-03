@@ -10,6 +10,10 @@ conform.setup({
     typescript = { 'prettier' },
     javascriptreact = { 'prettier' },
     typescriptreact = { 'prettier' },
+    css = { 'prettier' },
+    html = { 'prettier' },
+    json = { 'prettier' },
+    python = { 'ruff_format' },
   },
   format_on_save = { timeout_ms = 500, lsp_format = 'fallback' },
 })
