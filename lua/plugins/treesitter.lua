@@ -11,17 +11,12 @@ ts.setup({
 
 ts.install({
   'bash',
-  'c',
   'css',
   'html',
   'javascript',
   'json',
-  'lua',
-  'markdown',
   'python',
   'tsx',
   'typescript',
-  'vim',
-  'vimdoc',
   'yaml',
 })
