@@ -32,9 +32,9 @@ vim.opt.cursorline = true
 vim.opt.undofile = true
 vim.opt.title = true
 vim.opt.titlestring = 'nvim - %t'
-
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.completeopt = { 'menuone', 'noselect', 'noinsert', 'popup' }
 
 -- spelling
 vim.api.nvim_create_autocmd('FileType', {
