@@ -1,22 +1,21 @@
 vim.pack.add({
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+  { src = 'https://github.com/romus204/tree-sitter-manager.nvim' },
 })
 
-local ts = require('nvim-treesitter')
+local tsm = require('tree-sitter-manager')
 
-ts.setup({
+tsm.setup({
   highlight = { enable = true },
   indent = { enable = true },
-})
-
-ts.install({
-  'bash',
-  'css',
-  'html',
-  'javascript',
-  'json',
-  'python',
-  'tsx',
-  'typescript',
-  'yaml',
+  ensure_installed = {
+    'bash',
+    'css',
+    'html',
+    'javascript',
+    'json',
+    'python',
+    'tsx',
+    'typescript',
+    'yaml',
+  },
 })
