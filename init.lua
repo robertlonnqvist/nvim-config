@@ -9,39 +9,39 @@ require('plugins.conform')
 require('plugins.gitsigns')
 require('plugins.which-key')
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.mouse = 'a'
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.termguicolors = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = false
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.showmode = false
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-vim.opt.signcolumn = 'yes'
-vim.opt.colorcolumn = '120'
-vim.opt.clipboard = 'unnamedplus'
-vim.opt.scrolloff = 8
-vim.opt.cursorline = true
-vim.opt.undofile = true
-vim.opt.title = true
-vim.opt.titlestring = 'nvim - %t'
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-vim.opt.completeopt = { 'menuone', 'noselect', 'noinsert', 'popup' }
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.mouse = 'a'
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.termguicolors = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.hlsearch = false
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
+vim.o.showmode = false
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+vim.o.signcolumn = 'yes'
+vim.o.colorcolumn = '120'
+vim.o.clipboard = 'unnamedplus'
+vim.o.scrolloff = 8
+vim.o.cursorline = true
+vim.o.undofile = true
+vim.o.title = true
+vim.o.titlestring = 'nvim - %t'
+vim.o.list = true
+vim.o.listchars = 'tab:» ,trail:·,nbsp:␣'
+vim.o.completeopt = 'menuone,noselect,noinsert,popup'
 
 -- spelling
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'gitcommit', 'gitrebase', 'markdown' },
   callback = function()
-    vim.opt_local.spell = true
+    vim.wo.spell = true
     -- adds dictionary words to the Ctrl-n / Ctrl-p completion list
-    vim.opt_local.complete:append('kspell')
+    vim.bo.complete = vim.bo.complete .. ',kspell'
   end,
 })
