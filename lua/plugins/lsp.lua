@@ -38,7 +38,10 @@ for _, name in ipairs(servers) do
   end
 end
 
+local lsp_group = vim.api.nvim_create_augroup('user_lsp', { clear = true })
+
 vim.api.nvim_create_autocmd('LspAttach', {
+  group = lsp_group,
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client and client:supports_method('textDocument/completion', { bufnr = args.buf }) then
@@ -48,6 +51,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.api.nvim_create_autocmd('CursorHold', {
+  group = lsp_group,
   callback = function()
     -- skip if we are in a window that's already a float or something else
     if vim.api.nvim_win_get_config(0).zindex then
