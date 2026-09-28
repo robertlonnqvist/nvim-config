@@ -15,6 +15,7 @@ $ ./install.sh
 ```shell
 $ npm install -g typescript-language-server vscode-langservers-extracted
 $ brew install lua-language-server pyright ruff
+$ curl https://sh.rustup.rs | sh -s -- -y -c rust-analyzer,clippy
 ```
 
 ## Treesitter parsers

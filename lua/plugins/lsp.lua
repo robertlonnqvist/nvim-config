@@ -46,6 +46,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client and client:supports_method('textDocument/completion', { bufnr = args.buf }) then
       vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+
+      vim.keymap.set('i', '<C-Space>', function()
+        vim.lsp.completion.get()
+      end, { buffer = args.buf, desc = 'Manually trigger LSP completion' })
     end
   end,
 })
@@ -69,3 +73,13 @@ vim.api.nvim_create_autocmd('CursorHold', {
     vim.diagnostic.open_float(nil, opts)
   end,
 })
+
+vim.keymap.set('i', '<CR>', function()
+  if vim.fn.pumvisible() == 1 then
+    -- Accepts the currently selected match
+    return '<C-y>'
+  else
+    -- Performs a normal return/new line if the menu is closed
+    return '<CR>'
+  end
+end, { expr = true, desc = 'Confirm completion with Enter' })
