@@ -1,35 +1,3 @@
-vim.lsp.config('lua_ls', {
-  cmd = { 'lua-language-server' },
-  filetypes = { 'lua' },
-  settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
-})
-
-vim.lsp.config('ruff', {
-  cmd = { 'ruff', 'server' },
-  filetypes = { 'python' },
-})
-
-vim.lsp.config('pyright', {
-  cmd = { 'pyright-langserver', '--stdio' },
-  filetypes = { 'python' },
-})
-
-vim.lsp.config('ts_ls', {
-  cmd = { 'typescript-language-server', '--stdio' },
-  filetypes = { 'javascript', 'typescript', 'typescriptreact', 'javascriptreact' },
-  root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
-})
-
-vim.lsp.config('html', {
-  cmd = { 'vscode-html-language-server', '--stdio' },
-  filetypes = { 'html' },
-})
-
-vim.lsp.config('cssls', {
-  cmd = { 'vscode-css-language-server', '--stdio' },
-  filetypes = { 'css', 'scss', 'less' },
-})
-
 local servers = { 'lua_ls', 'ruff', 'pyright', 'ts_ls', 'html', 'cssls' }
 for _, name in ipairs(servers) do
   local config = vim.lsp.config[name]

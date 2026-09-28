@@ -3,6 +3,7 @@ vim.g.maplocalleader = '\\'
 
 require('plugins.colorscheme')
 require('plugins.lualine')
+require('plugins.mason')
 require('plugins.lsp')
 require('plugins.treesitter')
 require('plugins.conform')

@@ -1,17 +1,17 @@
 vim.pack.add({ {
-  src = "https://github.com/mrcjkb/rustaceanvim",
-  version = vim.version.range("^9"),
+  src = 'https://github.com/mrcjkb/rustaceanvim',
+  version = vim.version.range('^9'),
 } })
 
 vim.g.rustaceanvim = {
   server = {
     default_settings = {
-      ["rust-analyzer"] = {
+      ['rust-analyzer'] = {
         cargo = {
-          allFeatures = true,
+          features = 'all',
         },
         check = {
-          command = "clippy",
+          command = 'clippy',
         },
       },
     },
