@@ -10,6 +10,7 @@ require('plugins.conform')
 require('plugins.gitsigns')
 require('plugins.which-key')
 require('plugins.rust')
+require('plugins.telescope')
 
 vim.o.number = true
 vim.o.relativenumber = true
@@ -83,4 +84,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank({ timeout = 200 })
   end,
 })
-

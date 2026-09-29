@@ -16,5 +16,6 @@ require('mason-tool-installer').setup({
     'typescript-language-server',
     'html-lsp',
     'css-lsp',
+    'json-lsp',
   },
 })
