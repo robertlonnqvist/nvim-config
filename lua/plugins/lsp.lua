@@ -47,7 +47,13 @@ vim.lsp.config('jsonls', {
   root_markers = { 'package.json', '.git' },
 })
 
-local servers = { 'lua_ls', 'ruff', 'pyright', 'ts_ls', 'html', 'cssls', 'jsonls' }
+vim.lsp.config('bashls', {
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'sh', 'bash' },
+  root_markers = { '.git' },
+})
+
+local servers = { 'lua_ls', 'ruff', 'pyright', 'ts_ls', 'html', 'cssls', 'jsonls', 'bashls' }
 for _, name in ipairs(servers) do
   vim.lsp.enable(name)
 end

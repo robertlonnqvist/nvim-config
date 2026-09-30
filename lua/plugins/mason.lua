@@ -17,5 +17,7 @@ require('mason-tool-installer').setup({
     'html-lsp',
     'css-lsp',
     'json-lsp',
+    'bash-language-server',
+    'shellcheck',
   },
 })
