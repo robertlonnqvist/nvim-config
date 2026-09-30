@@ -1,7 +1,5 @@
-return {
-	"folke/which-key.nvim",
-	dependencies = { 'nvim-tree/nvim-web-devicons' },
-	event = 'VeryLazy',
-	lazy = true,
-	opts = {},
-}
+vim.pack.add({
+  { src = 'https://github.com/folke/which-key.nvim' },
+})
+
+require('which-key').setup()
