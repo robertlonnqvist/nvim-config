@@ -84,10 +84,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank({ timeout = 200 })
   end,
 })
-
-vim.filetype.add({
-  filename = {
-    ['bashrc'] = 'bash',
-    ['zshrc'] = 'zsh',
-  },
-})
