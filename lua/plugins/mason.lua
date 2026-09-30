@@ -19,5 +19,6 @@ require('mason-tool-installer').setup({
     'json-lsp',
     'bash-language-server',
     'shellcheck',
+    'eslint-lsp',
   },
 })

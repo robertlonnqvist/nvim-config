@@ -53,7 +53,38 @@ vim.lsp.config('bashls', {
   root_markers = { '.git' },
 })
 
-local servers = { 'lua_ls', 'ruff', 'pyright', 'ts_ls', 'html', 'cssls', 'jsonls', 'bashls' }
+vim.lsp.config('eslint', {
+  cmd = { 'vscode-eslint-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  -- Help the engine attach properly based on common lint rules or monorepo roots
+  root_markers = {
+    'eslint.config.js',
+    'eslint.config.mjs',
+    'eslint.config.cjs',
+    '.eslintrc.json',
+    '.eslintrc.js',
+    'package.json',
+    '.git',
+  },
+  settings = {
+    validate = 'on',
+    useESLintClass = true,
+    nodePath = '',
+    rulesCustomizations = {},
+    problems = {},
+    workingDirectory = { mode = 'auto' },
+    experimental = {},
+    codeAction = {
+      disableRuleComment = {
+        enable = true,
+        location = 'separateLine',
+      },
+      showDocumentation = { enable = true },
+    },
+  },
+})
+
+local servers = { 'lua_ls', 'ruff', 'pyright', 'ts_ls', 'html', 'cssls', 'jsonls', 'bashls', 'eslint' }
 for _, name in ipairs(servers) do
   vim.lsp.enable(name)
 end
@@ -95,6 +126,11 @@ vim.api.nvim_create_autocmd('CursorHold', {
   callback = function()
     -- skip if we are in a window that's already a float or something else
     if vim.api.nvim_win_get_config(0).zindex then
+      return
+    end
+
+    -- skip if diagnostics are missing on current line
+    if #vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 }) == 0 then
       return
     end
 
