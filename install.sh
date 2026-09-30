@@ -1,20 +1,20 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-set -euo pipefail
+set -eu
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-if [ -d ~/.config/nvim ] && [ ! -L ~/.config/nvim ]; then
-  mv ~/.config/nvim ~/.config/nvim.bak
+if [ -d "${HOME}/.config/nvim" ] && [ ! -L "${HOME}/.config/nvim" ]; then
+  mv "${HOME}/.config/nvim" "${HOME}/.config/nvim.bak"
 else
-  rm -f ~/.config/nvim
+  rm -rf "${HOME}/.config/nvim"
 fi
 
-mkdir -p ~/.config
-ln -s "${SCRIPT_DIR}" ~/.config/nvim
+mkdir -p "${HOME}/.config"
+ln -s "${SCRIPT_DIR}" "${HOME}/.config/nvim"
 
-mkdir -p ~/.local/bin
-if command -v nvim &> /dev/null; then
-  ln -sf "$(command -v nvim)" ~/.local/bin/vim
-  ln -sf "$(command -v nvim)" ~/.local/bin/vi
+mkdir -p "${HOME}/.local/bin"
+if command -v nvim >/dev/null; then
+  ln -sf "$(command -v nvim)" "${HOME}/.local/bin/vim"
+  ln -sf "$(command -v nvim)" "${HOME}/.local/bin/vi"
 fi
