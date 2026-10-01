@@ -28,7 +28,7 @@ vim.o.showmode = false
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.signcolumn = 'yes'
-vim.o.colorcolumn = '120'
+vim.o.colorcolumn = '100'
 vim.o.scrolloff = 8
 vim.o.cursorline = true
 vim.o.undofile = true
@@ -43,16 +43,14 @@ vim.o.smoothscroll = true
 vim.o.virtualedit = 'block'
 vim.o.wrap = false
 vim.o.jumpoptions = 'view'
-vim.opt.fillchars = { eob = ' ' }
+vim.o.fillchars = 'eob: '
 vim.o.confirm = true
+vim.o.winborder = 'rounded'
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
 vim.keymap.set('n', '<leader>Y', '"+Y', { desc = 'Yank line to system clipboard' })
 vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
 vim.keymap.set({ 'n', 'v' }, '<leader>P', '"+P', { desc = 'Paste before from system clipboard' })
-vim.keymap.set({ 'n', 'v' }, '<leader>d', '"+d', { desc = 'Delete to system clipboard' })
-
-vim.opt.colorcolumn = "100"
 
 -- spelling
 vim.api.nvim_create_autocmd('FileType', {

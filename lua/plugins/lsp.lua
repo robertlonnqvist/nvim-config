@@ -8,12 +8,21 @@ vim.lsp.config('pyright', {
   cmd = { 'pyright-langserver', '--stdio' },
   filetypes = { 'python' },
   root_markers = { 'pyproject.toml', 'setup.py', '.git' },
+  settings = {
+    -- ruff owns linting; pyright is type-checking only
+    pyright = { disableOrganizeImports = true },
+    python = { analysis = { diagnosticMode = 'openFilesOnly' } },
+  },
 })
 
 vim.lsp.config('ruff', {
   cmd = { 'ruff', 'server' },
   filetypes = { 'python' },
   root_markers = { 'pyproject.toml', 'setup.py', '.git' },
+  on_attach = function(client)
+    -- defer hover to pyright to avoid duplicate popups
+    client.server_capabilities.hoverProvider = false
+  end,
 })
 
 vim.lsp.config('lua_ls', {
@@ -121,45 +130,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-vim.api.nvim_create_autocmd('CursorHold', {
-  group = lsp_group,
-  callback = function()
-    -- skip if we are in a window that's already a float or something else
-    if vim.api.nvim_win_get_config(0).zindex then
-      return
-    end
-
-    -- skip if diagnostics are missing on current line
-    if #vim.diagnostic.get(0, { lnum = vim.fn.line('.') - 1 }) == 0 then
-      return
-    end
-
-    -- If any window is a float, stop immediately so we don't blink/close it!
-    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-      local config = vim.api.nvim_win_get_config(win)
-      if config.relative and config.relative ~= '' then
-        return -- A float is already open (like explainError), abort loop!
-      end
-    end
-
-    local opts = {
-      focusable = false,
-      close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
-      border = 'rounded',
-      source = 'always',
-      prefix = ' ',
-      scope = 'cursor',
-    }
-    vim.diagnostic.open_float(nil, opts)
-  end,
+vim.diagnostic.config({
+  virtual_text = false,
+  virtual_lines = { current_line = true },
+  underline = true,
+  severity_sort = true,
+  float = { border = 'rounded', source = true },
 })
 
+-- virtual_lines truncates at window width with wrap off; the float is focusable
+vim.keymap.set('n', '<leader>e', function()
+  vim.diagnostic.open_float({ focus = true, scope = 'line' })
+end, { desc = 'Show diagnostic float' })
+
 vim.keymap.set('i', '<CR>', function()
-  if vim.fn.pumvisible() == 1 then
-    -- Accepts the currently selected match
+  -- only confirm when an entry is actually selected, otherwise insert a newline
+  if vim.fn.pumvisible() == 1 and vim.fn.complete_info({ 'selected' }).selected ~= -1 then
     return '<C-y>'
-  else
-    -- Performs a normal return/new line if the menu is closed
-    return '<CR>'
   end
+  return '<CR>'
 end, { expr = true, desc = 'Confirm completion with Enter' })

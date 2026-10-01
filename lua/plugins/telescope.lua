@@ -26,4 +26,5 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live Grep Search 
 vim.keymap.set('n', 'grr', builtin.lsp_references, { desc = 'TS/Global: View References in Telescope' })
 vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = 'TS/Global: Go to Definition' })
 vim.keymap.set('n', 'grt', builtin.lsp_type_definitions, { desc = 'TS/Global: Go to Type Definition' })
+vim.keymap.set('n', 'gri', builtin.lsp_implementations, { desc = 'TS/Global: Go to Implementation' })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Global: View Project Errors & Warnings' })

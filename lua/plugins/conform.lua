@@ -13,12 +13,16 @@ conform.setup({
     css = { 'prettier' },
     html = { 'prettier' },
     json = { 'prettier' },
+    jsonc = { 'prettier' },
+    yaml = { 'prettier' },
+    markdown = { 'prettier' },
     python = { 'ruff_format' },
     sh = { 'shfmt' },
     bash = { 'shfmt' },
     zsh = { 'shfmt' },
+    toml = { 'taplo' },
   },
-  format_on_save = { timeout_ms = 500, lsp_format = 'fallback' },
+  format_on_save = { timeout_ms = 3000, lsp_format = 'fallback' },
 })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>cf', function()

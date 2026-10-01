@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Neovim >= 0.11.0
+- Neovim >= 0.12.0
 
 ## Installation
 
