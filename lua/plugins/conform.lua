@@ -1,6 +1,21 @@
 vim.pack.add({
+  { src = 'https://github.com/mason-org/mason.nvim' },
   { src = 'https://github.com/stevearc/conform.nvim' },
 })
+
+require('mason').setup()
+
+local standalone_tools = { 'stylua', 'prettier', 'shfmt', 'shellcheck', 'taplo' }
+local mr = require('mason-registry')
+
+mr.refresh(function()
+  for _, tool in ipairs(standalone_tools) do
+    local p = mr.get_package(tool)
+    if not p:is_installed() then
+      p:install()
+    end
+  end
+end)
 
 local conform = require('conform')
 conform.setup({

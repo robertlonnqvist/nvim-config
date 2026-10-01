@@ -1,103 +1,46 @@
-vim.lsp.config('ts_ls', {
-  cmd = { 'typescript-language-server', '--stdio' },
-  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-  root_markers = { 'tsconfig.json', 'package.json', '.git' },
+vim.pack.add({
+  { src = 'https://github.com/mason-org/mason.nvim' },
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+  { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
 })
 
+require('mason').setup()
+
+-- custom overrides for lsp's
 vim.lsp.config('pyright', {
-  cmd = { 'pyright-langserver', '--stdio' },
-  filetypes = { 'python' },
-  root_markers = { 'pyproject.toml', 'setup.py', '.git' },
   settings = {
-    -- ruff owns linting; pyright is type-checking only
     pyright = { disableOrganizeImports = true },
     python = { analysis = { diagnosticMode = 'openFilesOnly' } },
   },
 })
 
 vim.lsp.config('ruff', {
-  cmd = { 'ruff', 'server' },
-  filetypes = { 'python' },
-  root_markers = { 'pyproject.toml', 'setup.py', '.git' },
-  on_attach = function(client)
-    -- defer hover to pyright to avoid duplicate popups
-    client.server_capabilities.hoverProvider = false
+  on_attach = function(c)
+    c.server_capabilities.hoverProvider = false
   end,
 })
 
 vim.lsp.config('lua_ls', {
-  cmd = { 'lua-language-server' },
-  filetypes = { 'lua' },
-  root_markers = { '.luarc.json', '.luarc.jsonc', '.git' },
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' },
-      },
-    },
+  settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+})
+
+-- install lsp's and enable them
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'ruff',
+    'lua_ls',
+    'pyright',
+    'ts_ls',
+    'html',
+    'cssls',
+    'jsonls',
+    'bashls',
+    'eslint',
   },
+  automatic_enable = true,
 })
 
-vim.lsp.config('html', {
-  cmd = { 'vscode-html-language-server', '--stdio' },
-  filetypes = { 'html', 'xhtml' },
-  root_markers = { 'package.json', '.git' },
-})
-
-vim.lsp.config('cssls', {
-  cmd = { 'vscode-css-language-server', '--stdio' },
-  filetypes = { 'css', 'scss', 'less' },
-  root_markers = { 'package.json', '.git' },
-})
-
-vim.lsp.config('jsonls', {
-  cmd = { 'vscode-json-language-server', '--stdio' },
-  filetypes = { 'json', 'jsonc' },
-  root_markers = { 'package.json', '.git' },
-})
-
-vim.lsp.config('bashls', {
-  cmd = { 'bash-language-server', 'start' },
-  filetypes = { 'sh', 'bash' },
-  root_markers = { '.git' },
-})
-
-vim.lsp.config('eslint', {
-  cmd = { 'vscode-eslint-language-server', '--stdio' },
-  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-  -- Help the engine attach properly based on common lint rules or monorepo roots
-  root_markers = {
-    'eslint.config.js',
-    'eslint.config.mjs',
-    'eslint.config.cjs',
-    '.eslintrc.json',
-    '.eslintrc.js',
-    'package.json',
-    '.git',
-  },
-  settings = {
-    validate = 'on',
-    useESLintClass = true,
-    nodePath = '',
-    rulesCustomizations = {},
-    problems = {},
-    workingDirectory = { mode = 'auto' },
-    experimental = {},
-    codeAction = {
-      disableRuleComment = {
-        enable = true,
-        location = 'separateLine',
-      },
-      showDocumentation = { enable = true },
-    },
-  },
-})
-
-local servers = { 'lua_ls', 'ruff', 'pyright', 'ts_ls', 'html', 'cssls', 'jsonls', 'bashls', 'eslint' }
-for _, name in ipairs(servers) do
-  vim.lsp.enable(name)
-end
-
+-- lsp configs
 local lsp_group = vim.api.nvim_create_augroup('user_lsp', { clear = true })
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -108,18 +51,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
       return
     end
 
+    -- enable Codelens if supported (Trigger action via global default mapping 'grx')
     if client:supports_method('textDocument/codeLens', { bufnr = args.buf }) then
       vim.lsp.codelens.enable(true, { bufnr = args.buf })
-      vim.keymap.set('n', '<leader>cr', vim.lsp.codelens.run, {
-        buffer = args.buf,
-        desc = 'LSP: Run CodeLens Action',
-      })
     end
 
+    -- enable Inlay Hints if supported
     if client:supports_method('textDocument/inlayHint', { bufnr = args.buf }) then
       vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
     end
 
+    -- enable native autocomplete triggers
     if client:supports_method('textDocument/completion', { bufnr = args.buf }) then
       vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
 
@@ -129,6 +71,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
 vim.diagnostic.config({
   signs = {
     text = {
