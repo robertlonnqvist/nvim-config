@@ -1,10 +1,6 @@
 vim.pack.add({
-  { src = 'https://github.com/mason-org/mason.nvim' },
   { src = 'https://github.com/neovim/nvim-lspconfig' },
-  { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
 })
-
-require('mason').setup()
 
 -- custom overrides for lsp's
 vim.lsp.config('pyright', {
@@ -24,21 +20,34 @@ vim.lsp.config('lua_ls', {
   settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
 })
 
--- install lsp's and enable them
-require('mason-lspconfig').setup({
-  ensure_installed = {
-    'ruff',
-    'lua_ls',
-    'pyright',
-    'ts_ls',
-    'html',
-    'cssls',
-    'jsonls',
-    'bashls',
-    'eslint',
+vim.lsp.config('nil_ls', {
+  settings = {
+    ['nil'] = {
+      nix = {
+        flake = {
+          autoArchive = true,
+        },
+      },
+    },
   },
-  automatic_enable = true,
 })
+
+local servers = {
+  'ruff',
+  'lua_ls',
+  'pyright',
+  'ts_ls',
+  'html',
+  'cssls',
+  'jsonls',
+  'bashls',
+  'eslint',
+  'nil_ls',
+}
+
+for _, server in ipairs(servers) do
+  vim.lsp.enable(server)
+end
 
 -- lsp configs
 local lsp_group = vim.api.nvim_create_augroup('user_lsp', { clear = true })
